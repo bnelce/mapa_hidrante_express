@@ -1,4 +1,4 @@
-Este projeto visa construir um backend para o aplicativo Mapa de Hidrantes do CBMCE.
+Este projeto visa construir um backend NODEJS, EXPRESS, Yup,  para o aplicativo Mapa de Hidrantes do CBMCE.
 
 Objetivo do aplicativo é identificar todos os hidrantes no Ceará, bem como categorizar, vistoriar e ajudar no ambiente operacional.
 
@@ -22,10 +22,10 @@ O sistema é composto por 5 tabelas, devendo ser gerado via MIGRATIONS:
       id (AI), file, name, type, subtype, created_at, updated_at
 
     Hidrantes
-      id (AI), ... , created_at, updated_at
+      id (AI), ... , ativo, created_at, updated_at
 
     Vistoria
-      id (AI), hidrante_id (FK), ... , created_at, updated_at
+      id (AI), hidrante_id (FK), user_id (FK), ... , created_at, updated_at
 
 Rotas
 
@@ -51,15 +51,31 @@ Rotas
       store --> files : upload de imagem. Recebe o file, define o tamanho máximo de 2mb, monta o fileName concatenando a data e o subtype(extensão), move o arquivo para a pasta de imagens, monta o objeto file e insere (file, name, type, subtype ) no banco
       show  --> files/:id : pelo id é possível montar o caminho do arquivo e mostrar em tela
 
-    Hidrantes
+    Hidrantes (Todos)
 
-    ...
-
-    Vistorias
-
-    ...
-
+    index --> hidrantes :mostrar todos os hidrantes
+    show --> hidrantes/:id :mostrar os dados do hidrantes e todas as vistorias
+    store --> hidrantes :cadastrar novo hidrante, passível de validação do ADM (ativo = false), após o cadastro enviar emails e push notification para adms
+    update --> hidrantes/:id atualizar dados do hidrante, sem acesso a flag ativo
     
+    AdministrarHidrantes (Adm) 
+
+    update --> hidrantes/:id :ativar ou desativar hidrante
+    delete --> hidrantes/:id :ao meu ver deve ser usado apenas em caso de hidrante duplicado 
+
+    Vistorias (Todos)
+
+    index --> vistorias mostrar a lista de todas as vistorias
+    show --> vistorias/:id mostrar todas as vistorias do hidrante selecionado
+    store --> vistorias: cadastrar nova vistoria
+    update --> vistorias/:id atualizar vistoria
+    delete --> vistorias/:id deletar vistoria (O usuário comum poderá deletar? Analisar) 
+
+    Dashboard
+
+    Índices: total de hidrantes
+    Graficos: hidrantes por municipio, hidrantes por ais, Hidrantes por tipo, Classi
+
 
 
 
