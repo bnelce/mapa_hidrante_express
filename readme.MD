@@ -1,4 +1,4 @@
-Este projeto visa construir um backend NODEJS, EXPRESS, Yup,  para o aplicativo Mapa de Hidrantes do CBMCE.
+Este projeto visa construir um backend NODEJS, EXPRESS, Sequelize, Yup para o aplicativo Mapa de Hidrantes do CBMCE.
 
 Objetivo do aplicativo é identificar todos os hidrantes no Ceará, bem como categorizar, vistoriar e ajudar no ambiente operacional.
 
@@ -74,7 +74,7 @@ Rotas
     Dashboard
 
     Índices: total de hidrantes
-    Graficos: hidrantes por municipio, hidrantes por ais, Hidrantes por tipo, Classi
+    Graficos: hidrantes por municipio, hidrantes por ais, Hidrantes por tipo ...
 
 
 
