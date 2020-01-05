@@ -13,13 +13,13 @@ Banco de Dados
 O sistema é composto por 5 tabelas, devendo ser gerado via MIGRATIONS:
 
     Users
-      id (AI), matricula, username, email, password, token, administrador, token_created_at, created_at, updated_at
+      id* (AI), matricula*, username*, email*, password*, token, administrador, token_created_at, created_at, updated_at
 
     Tokens
-      id (AI), user_id (FK), token, type, id_revoked, created_at, updated_at
+      id* (AI), user_id* (FK), token*, type, id_revoked, created_at, updated_at
 
     Files
-      id (AI), file, name, type, subtype, created_at, updated_at
+      id* (AI), file*, name*, type*, subtype*, created_at, updated_at
 
     Hidrantes
       id (AI), ... , ativo, created_at, updated_at
