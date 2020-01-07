@@ -22,10 +22,10 @@ O sistema é composto por 5 tabelas, devendo ser gerado via MIGRATIONS:
       id* (AI), file*, name*, type*, subtype*, created_at, updated_at
 
     Hidrantes
-      id (AI), ... , ativo, created_at, updated_at
+      id (AI), imagem_id , numero, tipo, cor, cep, endereco_rua, endereco_num, municipio, uf, lat, long, hidrometro, entre_ruas,  ativo, created_at, updated_at
 
     Vistoria
-      id (AI), hidrante_id (FK), user_id (FK), ... , created_at, updated_at
+      id (AI), hidrante_id (FK), user_id (FK), pressao, vazao, condicoes, cor, data_hora_vistoria, created_at, updated_at
 
 Rotas
 
