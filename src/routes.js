@@ -1,22 +1,28 @@
 import { Router } from 'express';
+
+import multer from 'multer';
+import multerConfig from './config/multer';
+
+import FileController from './app/controllers/FileController';
 import SessionController from './app/controllers/SessionController';
-import UserController from './app/controllers/SecUserController';
-import hidrantesController from './app/controllers/HidrantesController';
+//import SecUserController from './app/controllers/SecUserController';
+import HidrantesController from './app/controllers/HidrantesController';
+
 import authMiddleware from './app/middlewares/auth';
 
 const routes = new Router();
+const upload = multer(multerConfig);
+
 
 routes.post('/sessions', SessionController.store);
-routes.post('/hidrantes', hidrantesController.store);
 
 routes.use(authMiddleware);
-routes.put('/sessions', UserController.update);
+routes.post('/hidrantes', HidrantesController.store);
+//routes.post('/files', upload.single('file'), FileController.store);
+routes.post('/files', upload.single('file'), (req,res) => {
+    return res.json(req.file);
+})
 
-/*
-routes.post('/users', UserController.store);
-routes.post('/sessions', SessionController.store);
-Coloca aqui para os middlewares valerem para todas as rotas que estao debaixo
- Para atualizar os dados cadastrais
-routes.put('/users', UserController.update);
-*/
+
 export default routes;
+

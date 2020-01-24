@@ -2,6 +2,7 @@ import SecUser from '../models/SecUser';
 
 class SecUserController {
   async store(req, res) {
+
     const secUserExists = await User.findOne({ where: { email: req.body.email } });
     if (secUserExists) {
       return res.status(400).json({ error: 'User already exister' });
@@ -14,4 +15,5 @@ class SecUserController {
     return res.json(req.id);
   }
 }
+
 export default new SecUserController();

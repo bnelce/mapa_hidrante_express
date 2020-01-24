@@ -3,7 +3,7 @@ import Sequelize, { Model } from 'sequelize';
 class Hidrantes extends Model {
   static init(sequelize) {
     super.init(
-      {
+      {        
         numero: Sequelize.STRING,
         tipo: Sequelize.STRING,
         cor: Sequelize.STRING,
@@ -22,6 +22,12 @@ class Hidrantes extends Model {
         sequelize,
       }
     );
+    
+  }
+  static associate(models) {
+    this.belongsTo(models.File, { foreignKey: 'imagem_id', as: 'imagem' });
+    this.belongsTo(models.SecUser, { foreignKey: 'user_id', as: 'usuario_cadastro' });
+
   }
 }
 

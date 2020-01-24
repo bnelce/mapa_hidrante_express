@@ -1,11 +1,11 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('hidrantes', {
+    return queryInterface.createTable('pub_hidrantes', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
         autoIncrement: true,
-        primarykey: true,
+        primaryKey: true,
       },
       numero: {
         type: Sequelize.STRING,
@@ -51,17 +51,20 @@ module.exports = {
         type: Sequelize.STRING,
         allowNull: false,
       },
-      imagem_id: {
-        type: Sequelize.STRING,
-        allowNull: false,
-      },
       user_id: {
-        type: Sequelize.STRING,
+        type: Sequelize.INTEGER,
         allowNull: true,
-        references: { model: 'users', key: 'id' },
+        references: { model: 'sec_users', key: 'id' },
         on_update: 'CASCADE',
         on_Delete: 'SET NULL',
-      },
+      },      
+      imagem_id: {
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        references: { model: 'pub_files', key: 'id' },
+        on_update: 'CASCADE',
+        on_Delete: 'SET NULL',
+      },      
       created_at: {
         type: Sequelize.DATE,
         allowNull: false,
@@ -73,6 +76,6 @@ module.exports = {
     });
   },
   down: queryInterface => {
-    return queryInterface.dropTable('hidrantes');
+    return queryInterface.dropTable('pub_hidrantes');
   },
 };
