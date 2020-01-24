@@ -1,6 +1,6 @@
 import { Router } from 'express';
 import SessionController from './app/controllers/SessionController';
-import UserController from './app/controllers/UserController';
+import UserController from './app/controllers/SecUserController';
 import hidrantesController from './app/controllers/HidrantesController';
 import authMiddleware from './app/middlewares/auth';
 

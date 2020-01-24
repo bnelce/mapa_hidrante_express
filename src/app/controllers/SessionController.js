@@ -1,17 +1,17 @@
 import jwt from 'jsonwebtoken';
 import crypto from 'crypto';
-import User from '../models/user';
+import SecUser from '../models/SecUser';
 import authConfig from '../../config/auth';
 
 // Classe de autenticacao do usuario
 class SessionController {
   async store(req, res) {
     const { login, password } = req.body;
-    const user = await User.findOne({ where: { login } });
+    const secUser = await SecUser.findOne({ where: { login } });
     // const userpass = await User.findOne({ where: { pswd } });
     // console.log(userpass);
     // Comparando se o email existe
-    if (!user) {
+    if (!secUser) {
       return res.status(401).json({ error: 'User not found' });
     }
 
@@ -21,14 +21,14 @@ class SessionController {
       .digest('hex');
 
     // Comparando se a senha está correta
-    if (pswdMD5 != user.pswd) {
+    if (pswdMD5 != secUser.pswd) {
       return res.status(401).json({ error: 'Password does not match' });
     }
 
-    const { id, name } = user;
+    const { id, name } = secUser;
 
     return res.json({
-      user: { id, name },
+      secuser: { id, name },
       token: jwt.sign({ id }, authConfig.secret, {
         expiresIn: authConfig.expiresIn,
       }),
