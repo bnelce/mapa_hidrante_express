@@ -20,12 +20,13 @@ class Hidrantes extends Model {
       },
       {
         sequelize,
+        tableName: 'pub_hidrantes'
       }
     );
     
   }
   static associate(models) {
-    this.belongsTo(models.File, { foreignKey: 'imagem_id', as: 'imagem' });
+    this.belongsTo(models.Files, { foreignKey: 'imagem_id', as: 'imagem' });
     this.belongsTo(models.SecUser, { foreignKey: 'user_id', as: 'usuario_cadastro' });
 
   }

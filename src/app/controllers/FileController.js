@@ -1,11 +1,11 @@
-import File from '../models/File';
+import Files from '../models/Files';
 
-class FileController {
+class PubFileController {
   async store(req, res) {
 
     const { originalname: name, filename: path } = req.file;
 
-    const file = await File.create({
+    const file = await Files.create({
       name,
       path
     });
@@ -14,4 +14,4 @@ class FileController {
   }
 }
 
-export default new FileController();
+export default new PubFileController();

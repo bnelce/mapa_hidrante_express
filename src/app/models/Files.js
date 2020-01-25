@@ -1,7 +1,7 @@
 import Sequelize, { Model } from "sequelize";
 
 
-class File extends Model {
+class Files extends Model {
   static init(sequelize) {
     super.init(
       {
@@ -12,15 +12,15 @@ class File extends Model {
           get() {
             return `http://localhost:3333/files/${this.path}`;
           }
-
         }
       },
       {
         sequelize,
+        tableName: 'pub_files'
       }
     );
     return this;
   }
 }
 
-export default File;
+export default Files;
