@@ -14,20 +14,21 @@ class Hidrantes extends Model {
         uf: Sequelize.STRING,
         latitude: Sequelize.STRING,
         longitude: Sequelize.STRING,
-        hidrometro: Sequelize.STRING,
-        imagem_id: Sequelize.STRING,
-        user_id: Sequelize.STRING,
+        hidrometro: Sequelize.STRING,        
       },
       {
         sequelize,
-        tableName: 'pub_hidrantes'
+        tableName: 'hidr_hidrantes'
       }
+
     );
-    
+    return this;
   }
+
   static associate(models) {
+    this.belongsTo(models.SecUser, { foreignKey: 'user_id', as: 'user' });
     this.belongsTo(models.Files, { foreignKey: 'imagem_id', as: 'imagem' });
-    this.belongsTo(models.SecUser, { foreignKey: 'user_id', as: 'usuario_cadastro' });
+    
 
   }
 }

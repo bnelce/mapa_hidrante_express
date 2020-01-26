@@ -1,5 +1,6 @@
 import * as Yup from 'yup';
 import SecUser from '../models/SecUser';
+import Files from '../models/Files';
 
 class SecUserController {
   async store(req, res) {
@@ -32,8 +33,17 @@ class SecUserController {
   }
 
   async index(req,res) {
-    const secUsers = await SecUser.findAll();
-
+    const secUsers = await SecUser.findAll({
+      attributes: ['login', 'name','email','active'],   
+      include: [
+        {
+          model: Files,          
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+      
     return res.json(secUsers);
   }
 }

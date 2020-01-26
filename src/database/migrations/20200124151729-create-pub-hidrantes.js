@@ -1,6 +1,6 @@
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('pub_hidrantes', {
+    return queryInterface.createTable('hidr_hidrantes', {
       id: {
         type: Sequelize.INTEGER,
         allowNull: false,
@@ -73,9 +73,13 @@ module.exports = {
         type: Sequelize.DATE,
         allowNull: false,
       },
+      ativo: {
+        type: Sequelize.INTEGER,
+        allowNull: false,
+      },
     });
   },
   down: queryInterface => {
-    return queryInterface.dropTable('pub_hidrantes');
+    return queryInterface.dropTable('hidr_hidrantes');
   },
 };

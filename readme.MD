@@ -38,7 +38,7 @@ Rotas
       delete --> users/:id :deletar usuário (ideal que só desativasse - analisar)
     
     Sessão
-      store --> sessions:  Criar sessão retornando um token JWT
+      store --> sessions:  Criar sessão retornando um token JWT  --> ok
 
     Tokens
       
@@ -53,7 +53,7 @@ Rotas
 
     Hidrantes (Todos)
 
-    index --> hidrantes :mostrar todos os hidrantes
+    index --> hidrantes :mostrar todos os hidrantes --> ok
     show --> hidrantes/:id :mostrar os dados do hidrantes e todas as vistorias
     store --> hidrantes :cadastrar novo hidrante, passível de validação do ADM (ativo = false), após o cadastro enviar emails e push notification para adms
     update --> hidrantes/:id atualizar dados do hidrante, sem acesso a flag ativo
@@ -65,10 +65,10 @@ Rotas
 
     Vistorias (Todos)
 
-    index --> vistorias mostrar a lista de todas as vistorias
+    index --> vistorias mostrar a lista de todas as vistorias --> ok
     show --> vistorias/:id mostrar todas as vistorias do hidrante selecionado
-    store --> vistorias: cadastrar nova vistoria
-    update --> vistorias/:id atualizar vistoria
+    store --> vistorias: cadastrar nova vistoria --> ok
+    update --> vistorias/:id atualizar vistoria e atualizar dados do do hidrante relacionado
     delete --> vistorias/:id deletar vistoria (O usuário comum poderá deletar? Analisar) 
 
     Dashboard

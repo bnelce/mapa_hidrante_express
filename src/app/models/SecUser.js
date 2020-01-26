@@ -1,5 +1,8 @@
 import Sequelize, { Model } from 'sequelize';
 
+import Hidrante from  '../models/Hidrantes';
+import Files from  '../models/Files';
+
 class SecUser extends Model {
   static init(sequelize) {
     super.init(
@@ -12,25 +15,23 @@ class SecUser extends Model {
         active: Sequelize.STRING,
         activation_code: Sequelize.STRING,
         priv_admin: Sequelize.STRING,
-        usr_active: Sequelize.STRING,
-        avatar_id: Sequelize.STRING
+        usr_active: Sequelize.STRING,        
       },
       {
         sequelize,
       }
     );
-
     /*
     this.addHook('beforeSave', async user => {
       if (user.password) {
         user.password_hash = await bcrypt.hash(user.password, 8);
       }
     });*/
-    //return this;
+    return this;
   }
 
     static associate(models) {
-      this.belongsTo(models.Files, { foreignKey: 'avatar_id', as: 'avatar' });            
+       this.belongsTo(models.Files, { foreignKey: 'avatar_id', as: 'avatar'});       
     }
   }
 
