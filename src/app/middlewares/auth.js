@@ -14,7 +14,11 @@ export default async (req, res, next) => {
   try {
     // Decodificar o tocker e ver se está correto
     const decoded = await promisify(jwt.verify)(token, authConfig.secret);
-    req.id = decoded.id;
+    req.userLogin = decoded.login;
+    req.userEmail = decoded.email;
+    req.userName = decoded.name;
+
+    
     return next();
   } catch (err) {
     return res.status(401).json({ error: 'Token invalid' });
