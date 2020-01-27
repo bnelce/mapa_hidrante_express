@@ -1,8 +1,5 @@
 //import Sequelize from 'sequelize';
-const Sequelize = require('sequelize');
-
-import SecUser from '../app/models/SecUser';
-import Files from '../app/models/Files';
+import Sequelize from'sequelize';
 
 import Hidrantes from '../app/models/Hidrantes';
 import SecUser from '../app/models/SecUser';
