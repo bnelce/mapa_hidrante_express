@@ -1,5 +1,5 @@
 //import Sequelize from 'sequelize';
-const Sequelize = requeire('sequelize');
+const Sequelize = require('sequelize');
 
 import SecUser from '../app/models/SecUser';
 import Files from '../app/models/Files';
