@@ -1,4 +1,4 @@
-//postgres
+"use strict";//postgres
 /*module.exports = {
   dialect: 'postgres',
   host: 'localhost',

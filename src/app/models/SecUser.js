@@ -1,21 +1,21 @@
-import Sequelize, { Model } from 'sequelize';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(_sequelize);
 
-import Hidrante from  '../models/Hidrantes';
-import Files from  '../models/Files';
+var _Hidrantes = require('../models/Hidrantes'); var _Hidrantes2 = _interopRequireDefault(_Hidrantes);
+var _Files = require('../models/Files'); var _Files2 = _interopRequireDefault(_Files);
 
-class SecUser extends Model {
+class SecUser extends _sequelize.Model {
   static init(sequelize) {
     super.init(
       {
-        login: Sequelize.STRING,
-        pswd: Sequelize.STRING,
-        password: Sequelize.VIRTUAL,
-        name: Sequelize.STRING,
-        email: Sequelize.STRING,
-        active: Sequelize.STRING,
-        activation_code: Sequelize.STRING,
-        priv_admin: Sequelize.STRING,
-        usr_active: Sequelize.STRING,        
+        login: _sequelize2.default.STRING,
+        pswd: _sequelize2.default.STRING,
+        password: _sequelize2.default.VIRTUAL,
+        name: _sequelize2.default.STRING,
+        email: _sequelize2.default.STRING,
+        active: _sequelize2.default.STRING,
+        activation_code: _sequelize2.default.STRING,
+        priv_admin: _sequelize2.default.STRING,
+        usr_active: _sequelize2.default.STRING,        
       },
       {
         sequelize,
@@ -36,4 +36,4 @@ class SecUser extends Model {
     }
   }
 
-export default SecUser;
+exports. default = SecUser;

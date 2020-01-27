@@ -1,4 +1,4 @@
-module.exports = {
+"use strict";module.exports = {
   up: (queryInterface, Sequelize) => {
     return queryInterface.createTable('hidr_vistorias', {
     id: {

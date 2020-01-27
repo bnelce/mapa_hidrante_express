@@ -1,33 +1,33 @@
-import Hidrantes from '../models/Hidrantes';
-import SecUser from '../models/SecUser';
-import Files from '../models/Files';
-import Vistorias from '../models/Vistoria';
+"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Hidrantes = require('../models/Hidrantes'); var _Hidrantes2 = _interopRequireDefault(_Hidrantes);
+var _SecUser = require('../models/SecUser'); var _SecUser2 = _interopRequireDefault(_SecUser);
+var _Files = require('../models/Files'); var _Files2 = _interopRequireDefault(_Files);
+var _Vistoria = require('../models/Vistoria'); var _Vistoria2 = _interopRequireDefault(_Vistoria);
 
 class HidrantesController {
 
   async index(req,res) {
-    const hidrantes = await Hidrantes.findAll({
+    const hidrantes = await _Hidrantes2.default.findAll({
       attributes: ['id','numero','tipo','cor','cep','latitude','longitude'],            
       include: [        
         {
-          model: Files,          
+          model: _Files2.default,          
           as: 'imagem',
           attributes: ['id', 'path', 'url'],
         },
         {
-          model: SecUser,
+          model: _SecUser2.default,
           as: 'user',
           attributes: ['login','email'],
           include: [
             {
-              model: Files,          
+              model: _Files2.default,          
               as: 'avatar',
               attributes: ['id', 'path', 'url'],
             },
           ],          
         },
         {
-          model: Vistorias,          
+          model: _Vistoria2.default,          
           as: 'vistorias',
           attributes: ['tipo_vistoria','tipo_hidrante','cor',
                    'pressao','vazao','condicoes','acesso',
@@ -39,29 +39,29 @@ class HidrantesController {
   }
 
   async show(req,res) {
-    const hidrante = await Hidrantes.findOne({
+    const hidrante = await _Hidrantes2.default.findOne({
       where: {id: req.params.id},
       attributes: ['id','numero','tipo','cor','cep','latitude','longitude'],            
       include: [        
         {
-          model: Files,          
+          model: _Files2.default,          
           as: 'imagem',
           attributes: ['id', 'path', 'url'],
         },
         {
-          model: SecUser,
+          model: _SecUser2.default,
           as: 'user',
           attributes: ['login','email'],
           include: [
             {
-              model: Files,          
+              model: _Files2.default,          
               as: 'avatar',
               attributes: ['id', 'path', 'url'],
             },
           ],          
         },
         {
-          model: Vistorias,          
+          model: _Vistoria2.default,          
           as: 'vistorias',
           attributes: ['tipo_vistoria','tipo_hidrante','cor',
                    'pressao','vazao','condicoes','acesso',
@@ -87,7 +87,7 @@ class HidrantesController {
       hidrometro,
       imagem_id,
       user_id,
-    } = await Hidrantes.create(req.body);
+    } = await _Hidrantes2.default.create(req.body);
     return res.json({ 
       numero, 
       tipo, 
@@ -104,4 +104,4 @@ class HidrantesController {
       user_id, });
   }
 }
-export default new HidrantesController();
+exports. default = new HidrantesController();
