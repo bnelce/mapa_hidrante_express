@@ -56,7 +56,7 @@ class SecUserController {
   async show(req,res) {
 
     const secUser = await SecUser.findOne({
-      where: {id: req.body.id},
+      where: {login: req.secuser.login},
       attributes: ['login', 'name','email','active'],   
       include: [
         {
