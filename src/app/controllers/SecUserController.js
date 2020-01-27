@@ -1,6 +1,7 @@
 import * as Yup from 'yup';
 import SecUser from '../models/SecUser';
 import Files from '../models/Files';
+import Hidrantes from '../models/Hidrantes';
 
 class SecUserController {
   async store(req, res) {
@@ -36,6 +37,11 @@ class SecUserController {
     const secUsers = await SecUser.findAll({
       attributes: ['login', 'name','email','active'],   
       include: [
+        {
+          model: Hidrantes,
+          as: 'hidrantes',
+          attributes: ['numero','tipo','cor','cep','latitude','longitude'],
+        },
         {
           model: Files,          
           as: 'avatar',

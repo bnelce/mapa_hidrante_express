@@ -43,8 +43,9 @@ class VistoriasController {
 
 
   async show(req,res) {
-    const vistoria = await Vistoria.findByPk(req.params.id);
-    const vistoria = await Vistoria.findAll({
+    
+    const vistoria = await Vistoria.findOne({
+        where: {id: req.params.id},
         attributes: ['tipo_vistoria','tipo_hidrante','cor',
                      'pressao','vazao','condicoes','acesso',
                      'instalacao','pintura'],            
@@ -71,8 +72,7 @@ class VistoriasController {
               },
             ],          
           },
-        ],
-        
+        ],        
       });
     return res.json(vistoria);
   }
@@ -107,6 +107,13 @@ class VistoriasController {
         user_id,
         hidrante_id });
   }
+
+  async update(req,res) {
+    const vistoria = await Vistoria.findByPk(req.params.id)  
+    const vist = await vistoria.update(req.body);
+    return res.json(vist);
+  }
+
 }
 
 export default new VistoriasController();

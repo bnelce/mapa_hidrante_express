@@ -26,6 +26,8 @@ routes.get('/hidrantes/:id', HidrantesController.show);
 
 routes.get('/vistorias', VistoriasController.index);
 routes.post('/vistorias', VistoriasController.store);
+routes.get('/vistorias/:id', VistoriasController.show);
+routes.put('/vistorias/:id', VistoriasController.update);
 
 
 routes.get('/users', SecUserController.index);

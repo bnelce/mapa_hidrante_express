@@ -31,7 +31,8 @@ class SecUser extends Model {
   }
 
     static associate(models) {
-       this.belongsTo(models.Files, { foreignKey: 'avatar_id', as: 'avatar'});       
+       this.belongsTo(models.Files, { foreignKey: 'avatar_id', as: 'avatar'});
+       this.hasMany(models.Hidrantes, { foreignKey: 'user_id', as: 'hidrantes'});       
     }
   }
 
