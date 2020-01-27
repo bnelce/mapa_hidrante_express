@@ -52,6 +52,29 @@ class SecUserController {
       
     return res.json(secUsers);
   }
+
+  async show(req,res) {
+
+    const secUser = await SecUser.findOne({
+      where: {id: req.body.id},
+      attributes: ['login', 'name','email','active'],   
+      include: [
+        {
+          model: Hidrantes,
+          as: 'hidrantes',
+          attributes: ['numero','tipo','cor','cep','latitude','longitude'],
+        },
+        {
+          model: Files,          
+          as: 'avatar',
+          attributes: ['id', 'path', 'url'],
+        },
+      ],
+    });
+      
+    return res.json(secUser);
+
+  }
 }
 
 export default new SecUserController();

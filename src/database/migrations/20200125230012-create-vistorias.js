@@ -45,7 +45,7 @@ module.exports = {
     },    
     user_id: {
       type: Sequelize.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: { model: 'sec_users', key: 'id' },
       on_update: 'CASCADE',
       on_Delete: 'SET NULL',
@@ -59,7 +59,7 @@ module.exports = {
     },
     hidrante_id: {
       type: Sequelize.INTEGER,
-      allowNull: true,
+      allowNull: false,
       references: { model: 'hidr_hidrantes', key: 'id' },
       on_update: 'CASCADE',
       on_Delete: 'SET NULL',

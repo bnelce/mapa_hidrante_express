@@ -31,6 +31,7 @@ routes.put('/vistorias/:id', VistoriasController.update);
 
 
 routes.get('/users', SecUserController.index);
+routes.get('/users/:id', SecUserController.show);
 routes.post('/users', SecUserController.store);
 
 

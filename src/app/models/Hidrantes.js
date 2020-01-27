@@ -14,7 +14,8 @@ class Hidrantes extends Model {
         uf: Sequelize.STRING,
         latitude: Sequelize.STRING,
         longitude: Sequelize.STRING,
-        hidrometro: Sequelize.STRING,        
+        hidrometro: Sequelize.STRING,
+        ativo: Sequelize.INTEGER       
       },
       {
         sequelize,
@@ -28,6 +29,7 @@ class Hidrantes extends Model {
   static associate(models) {
     this.belongsTo(models.SecUser, { foreignKey: 'user_id', as: 'user' });
     this.belongsTo(models.Files, { foreignKey: 'imagem_id', as: 'imagem' });
+    this.hasMany(models.Vistoria, { foreignKey: 'hidrante_id', as: 'vistorias' });
     
 
   }

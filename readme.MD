@@ -55,7 +55,7 @@ Rotas
 
     index --> hidrantes :mostrar todos os hidrantes --> ok
     show --> hidrantes/:id :mostrar os dados do hidrantes e todas as vistorias
-    store --> hidrantes :cadastrar novo hidrante, passível de validação do ADM (ativo = false), após o cadastro enviar emails e push notification para adms
+    store --> hidrantes :cadastrar novo hidrante, passível de validação do ADM (ativo = false), após o cadastro enviar emails e push notification para adms 
     update --> hidrantes/:id atualizar dados do hidrante, sem acesso a flag ativo
     
     AdministrarHidrantes (Adm) 
