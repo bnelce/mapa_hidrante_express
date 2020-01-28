@@ -1,11 +1,11 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _Files = require('../models/Files'); var _Files2 = _interopRequireDefault(_Files);
+import Files from '../models/Files';
 
 class PubFileController {
   async store(req, res) {
 
     const { originalname: name, filename: path } = req.file;
 
-    const file = await _Files2.default.create({
+    const file = await Files.create({
       name,
       path
     });
@@ -14,4 +14,4 @@ class PubFileController {
   }
 }
 
-exports. default = new PubFileController();
+export default new PubFileController();

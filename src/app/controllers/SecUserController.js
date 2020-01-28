@@ -1,7 +1,7 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireWildcard(obj) { if (obj && obj.__esModule) { return obj; } else { var newObj = {}; if (obj != null) { for (var key in obj) { if (Object.prototype.hasOwnProperty.call(obj, key)) { newObj[key] = obj[key]; } } } newObj.default = obj; return newObj; } } function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _yup = require('yup'); var Yup = _interopRequireWildcard(_yup);
-var _SecUser = require('../models/SecUser'); var _SecUser2 = _interopRequireDefault(_SecUser);
-var _Files = require('../models/Files'); var _Files2 = _interopRequireDefault(_Files);
-var _Hidrantes = require('../models/Hidrantes'); var _Hidrantes2 = _interopRequireDefault(_Hidrantes);
+import * as Yup from 'yup';
+import SecUser from '../models/SecUser';
+import Files from '../models/Files';
+import Hidrantes from '../models/Hidrantes';
 
 class SecUserController {
   async store(req, res) {
@@ -17,12 +17,12 @@ class SecUserController {
       return res.status(400).json({ error: 'Validation fails 2' });
     }
 
-    const secUserExists = await _SecUser2.default.findOne({ where: { login: req.body.login } });
+    const secUserExists = await SecUser.findOne({ where: { login: req.body.login } });
     if (secUserExists) {
       return res.status(400).json({ error: 'Usuário já existente' });
     }
     
-    const { login, password, name, active } = await _SecUser2.default.create(req.body);
+    const { login, password, name, active } = await SecUser.create(req.body);
     return res.json({ id, login, password, name, active });
   }
 //----------------------------------------------------------------------------------------
@@ -34,16 +34,16 @@ class SecUserController {
   }
 
   async index(req,res) {
-    const secUsers = await _SecUser2.default.findAll({
+    const secUsers = await SecUser.findAll({
       attributes: ['login', 'name','email','active'],   
       include: [
         {
-          model: _Hidrantes2.default,
+          model: Hidrantes,
           as: 'hidrantes',
           attributes: ['numero','tipo','cor','cep','latitude','longitude'],
         },
         {
-          model: _Files2.default,          
+          model: Files,          
           as: 'avatar',
           attributes: ['id', 'path', 'url'],
         },
@@ -55,17 +55,17 @@ class SecUserController {
 
   async show(req,res) {
 
-    const secUser = await _SecUser2.default.findOne({
+    const secUser = await SecUser.findOne({
       where: {login: req.userLogin},
       attributes: ['login', 'name','email','active'],   
       include: [
         {
-          model: _Hidrantes2.default,
+          model: Hidrantes,
           as: 'hidrantes',
           attributes: ['numero','tipo','cor','cep','latitude','longitude'],
         },
         {
-          model: _Files2.default,          
+          model: Files,          
           as: 'avatar',
           attributes: ['id', 'path', 'url'],
         },
@@ -77,4 +77,4 @@ class SecUserController {
   }
 }
 
-exports. default = new SecUserController();
+export default new SecUserController();

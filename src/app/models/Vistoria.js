@@ -1,19 +1,19 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(_sequelize);
+import Sequelize, { Model } from "sequelize";
 
 
-class Vistoria extends _sequelize.Model {
+class Vistoria extends Model {
   static init(sequelize) {
     super.init(
       {
-        tipo_vistoria: _sequelize2.default.STRING,
-        tipo_hidrante: _sequelize2.default.STRING,
-        cor: _sequelize2.default.STRING,
-        pressao: _sequelize2.default.STRING,
-        vazao: _sequelize2.default.STRING,
-        condicoes: _sequelize2.default.STRING,
-        acesso: _sequelize2.default.STRING,
-        instalacao: _sequelize2.default.STRING,
-        pintura: _sequelize2.default.STRING,
+        tipo_vistoria: Sequelize.STRING,
+        tipo_hidrante: Sequelize.STRING,
+        cor: Sequelize.STRING,
+        pressao: Sequelize.STRING,
+        vazao: Sequelize.STRING,
+        condicoes: Sequelize.STRING,
+        acesso: Sequelize.STRING,
+        instalacao: Sequelize.STRING,
+        pintura: Sequelize.STRING,
       },
       {
         sequelize,
@@ -30,4 +30,4 @@ class Vistoria extends _sequelize.Model {
 }
 }
 
-exports. default = Vistoria;
+export default Vistoria;

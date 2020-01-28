@@ -1,14 +1,14 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(_sequelize);
+import Sequelize, { Model } from "sequelize";
 
 
-class Files extends _sequelize.Model {
+class Files extends Model {
   static init(sequelize) {
     super.init(
       {
-        name: _sequelize2.default.STRING,
-        path: _sequelize2.default.STRING,
+        name: Sequelize.STRING,
+        path: Sequelize.STRING,
         url: {
-          type: _sequelize2.default.VIRTUAL,
+          type: Sequelize.VIRTUAL,
           get() {
             return `http://localhost:3333/files/${this.path}`;
           }
@@ -23,4 +23,4 @@ class Files extends _sequelize.Model {
   }
 }
 
-exports. default = Files;
+export default Files;

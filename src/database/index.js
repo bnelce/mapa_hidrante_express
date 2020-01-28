@@ -1,14 +1,14 @@
-"use strict";Object.defineProperty(exports, "__esModule", {value: true}); function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }//import Sequelize from 'sequelize';
-var _sequelize = require('sequelize'); var _sequelize2 = _interopRequireDefault(_sequelize);
+//import Sequelize from 'sequelize';
+import Sequelize from'sequelize';
 
-var _Hidrantes = require('../app/models/Hidrantes'); var _Hidrantes2 = _interopRequireDefault(_Hidrantes);
-var _SecUser = require('../app/models/SecUser'); var _SecUser2 = _interopRequireDefault(_SecUser);
-var _Vistoria = require('../app/models/Vistoria'); var _Vistoria2 = _interopRequireDefault(_Vistoria);
-var _Files = require('../app/models/Files'); var _Files2 = _interopRequireDefault(_Files);
+import Hidrantes from '../app/models/Hidrantes';
+import SecUser from '../app/models/SecUser';
+import Vistoria from '../app/models/Vistoria';
+import Files from '../app/models/Files';
 
-var _database = require('../config/database'); var _database2 = _interopRequireDefault(_database);
+import databaseConfig from '../config/database';
 
-const models = [_SecUser2.default, _Hidrantes2.default, _Files2.default, _Vistoria2.default];
+const models = [SecUser, Hidrantes, Files, Vistoria];
 
 class Database {
   constructor() {
@@ -16,7 +16,7 @@ class Database {
   }
 
   init() {
-    this.connection = new (0, _sequelize2.default)(_database2.default);
+    this.connection = new Sequelize(databaseConfig);
 
     models
     .map(model => model.init(this.connection))
@@ -27,4 +27,4 @@ class Database {
   
 }
 
-exports. default = new Database();
+export default new Database();
