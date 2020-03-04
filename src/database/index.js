@@ -1,5 +1,5 @@
 //import Sequelize from 'sequelize';
-import Sequelize from'sequelize';
+import Sequelize from 'sequelize';
 
 import Hidrantes from '../app/models/Hidrantes';
 import SecUser from '../app/models/SecUser';

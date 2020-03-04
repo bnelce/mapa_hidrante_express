@@ -11,7 +11,7 @@
     underscored: true,
     underscoredAll: true,
   },
-};
+};*/
 
 //mysql
 module.exports = {
@@ -26,10 +26,10 @@ module.exports = {
     underscored: true,
     underscoredAll: true,
   },
-};*/
+};
 
 //umbler
-module.exports = {
+/*module.exports = {
   dialect: 'mysql',
   host: 'localhost',
   username: 'sabm',
@@ -41,5 +41,5 @@ module.exports = {
     underscored: true,
     underscoredAll: true,
   },
-};
+};*/
 
