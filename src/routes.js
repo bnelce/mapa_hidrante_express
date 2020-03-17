@@ -17,15 +17,6 @@ const routes = new Router();
 const upload = multer(multerConfig);
 
 
-var corsOptions = {
-    origin: true,
-    methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-    preflightContinue: false,
-    optionsSuccessStatus: 204,
-    headers: true,
-    credentials: true,
-  }
-
 routes.post('/sessions', SessionController.store);
 routes.post('/files', upload.single('file'), FileController.store);
 

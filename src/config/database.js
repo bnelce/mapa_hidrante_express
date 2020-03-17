@@ -18,7 +18,7 @@ module.exports = {
   dialect: 'mysql',
   host: 'localhost',
   username: 'root',
-  password: '',
+  password: 'mysql',
   database: 'sabm',
   define: {
     // garante que tem uma coluna createUp e updateAt dentro de cada tabela do banco de dados
